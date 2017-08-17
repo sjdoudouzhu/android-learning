@@ -19,6 +19,9 @@ public class MainActivity extends AppCompatActivity {
     private Button btn0;
     private Button btnAdd;
     private Button btnEquals;
+    private Button btnSub;
+    private Button btnMul;
+    private Button btnDiv;
     private TextView tvResult;
     private boolean isTypingNumber;
     private int firstNum = 0;
@@ -46,6 +49,9 @@ public class MainActivity extends AppCompatActivity {
         btn0 = (Button) findViewById(R.id.btn0);
         btnAdd = (Button) findViewById(R.id.btnAdd);
         btnEquals = (Button) findViewById(R.id.btnEquals);
+        btnSub = (Button) findViewById(R.id.btnSub);
+        btnMul = (Button) findViewById(R.id.btnMul);
+        btnDiv = (Button) findViewById(R.id.btnDiv);
         tvResult = (TextView) findViewById(R.id.tvResult);
 
         View.OnClickListener listener = new View.OnClickListener() {
@@ -72,6 +78,24 @@ public class MainActivity extends AppCompatActivity {
                 OperatorClicked(v);
             }
         });
+        btnSub.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OperatorClicked(v);
+            }
+        });
+        btnMul.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OperatorClicked(v);
+            }
+        });
+        btnDiv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OperatorClicked(v);
+            }
+        });
 
         btnEquals.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,8 +114,23 @@ public class MainActivity extends AppCompatActivity {
     private void EqualsClicked(View v) {
         isTypingNumber = false;
         secondNum = Integer.parseInt(tvResult.getText().toString());
-        String result = String.valueOf(firstNum + secondNum);
-        tvResult.setText(result);
+        if (operatorString.equals("+")){
+            String result = String.valueOf(firstNum + secondNum);
+            tvResult.setText(result);
+        } else if (operatorString.equals("-")){
+            String result = String.valueOf(firstNum - secondNum);
+            tvResult.setText(result);
+        } else if (operatorString.equals("*")){
+            String result = String.valueOf(firstNum * secondNum);
+            tvResult.setText(result);
+        } else if (operatorString.equals("/")){
+            if (secondNum==0){
+                return;
+            } else {
+                String result = String.valueOf(firstNum / secondNum);
+                tvResult.setText(result);
+            }
+        }
     }
 
     private void OperatorClicked(View v) {

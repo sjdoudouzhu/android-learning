@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Hello Image</string>
+    <string name="text1">泸沽湖夜景</string>
+    <string name="text2">狮子</string>
 </resources>
